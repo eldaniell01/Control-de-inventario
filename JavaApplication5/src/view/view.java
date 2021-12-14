@@ -5,6 +5,8 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author danie
@@ -17,7 +19,7 @@ public class view extends javax.swing.JFrame {
     public view() {
         initComponents();
     }
-
+    int x = 245;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,10 +31,14 @@ public class view extends javax.swing.JFrame {
 
         fondo = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jview = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jInsert = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jinsertpanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -43,55 +49,75 @@ public class view extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(151, 17, 21));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(151, 17, 21));
+        jview.setBackground(new java.awt.Color(151, 17, 21));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_notepad_50px.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_product_50px.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("INSERTAR PRODUCTOS");
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("VER PRODUCTOS");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout jviewLayout = new javax.swing.GroupLayout(jview);
+        jview.setLayout(jviewLayout);
+        jviewLayout.setHorizontalGroup(
+            jviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jviewLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addComponent(jLabel4)
+                .addContainerGap(72, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        jviewLayout.setVerticalGroup(
+            jviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jviewLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jviewLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(jLabel4)
                 .addGap(23, 23, 23))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, -1, 70));
+        jPanel1.add(jview, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, 70));
+
+        jPanel2.setBackground(new java.awt.Color(151, 17, 21));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jInsert.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jInsertMouseClicked(evt);
+            }
+        });
+        jPanel2.add(jInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 50));
+
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("INSERTAR PRODUCTOS");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, 30));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_product_50px.png"))); // NOI18N
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 280, 50));
 
         fondo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
 
-        jPanel2.setBackground(new java.awt.Color(217, 32, 36));
+        jinsertpanel.setBackground(new java.awt.Color(217, 32, 36));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jinsertpanelLayout = new javax.swing.GroupLayout(jinsertpanel);
+        jinsertpanel.setLayout(jinsertpanelLayout);
+        jinsertpanelLayout.setHorizontalGroup(
+            jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 710, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jinsertpanelLayout.setVerticalGroup(
+            jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 200, Short.MAX_VALUE)
         );
 
-        fondo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 41, 710, 200));
+        fondo.add(jinsertpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 710, 200));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,6 +132,43 @@ public class view extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jInsertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jInsertMouseClicked
+        if(x==245){
+            jinsertpanel.setSize(245,900);
+            Thread th = new Thread(){
+                @Override
+                public void run(){
+                    try{
+                        for(int i=245; i>=0;i--){
+                            Thread.sleep(1);
+                             jinsertpanel.setSize(i,900);
+                        }
+                    }catch(Exception e){
+                        JOptionPane.showMessageDialog(null, e);
+                    }
+                }
+            }; th.start();
+            x=0;
+        }else if(x==0){
+             jinsertpanel.show();
+             jinsertpanel.setSize(x,900);
+            Thread th = new Thread(){
+                @Override
+                public void run(){
+                    try{
+                        for(int i=0; i<=x;i++){
+                            Thread.sleep(1);
+                             jinsertpanel.setSize(i,900);
+                        }
+                    }catch(Exception e){
+                        JOptionPane.showMessageDialog(null, e);
+                    }
+                }
+            }; th.start();
+            x=245;
+        }
+    }//GEN-LAST:event_jInsertMouseClicked
 
     /**
      * @param args the command line arguments
@@ -144,10 +207,14 @@ public class view extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel fondo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jInsert;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jinsertpanel;
+    private javax.swing.JPanel jview;
     // End of variables declaration//GEN-END:variables
 }
