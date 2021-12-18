@@ -5,8 +5,13 @@
  */
 package view;
 
+import com.sun.awt.AWTUtilities;
+import java.awt.Color;
+import java.awt.Shape;
+import static java.awt.SystemColor.text;
+import java.awt.geom.RoundRectangle2D;
 import javax.swing.JOptionPane;
-
+import javax.swing.border.EmptyBorder; 
 /**
  *
  * @author danie
@@ -18,8 +23,10 @@ public class view extends javax.swing.JFrame {
      */
     public view() {
         initComponents();
+        
+        
     }
-    int x = 245;
+    int x = 200;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,6 +46,18 @@ public class view extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jinsertpanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -106,15 +125,148 @@ public class view extends javax.swing.JFrame {
 
         jinsertpanel.setBackground(new java.awt.Color(217, 32, 36));
 
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("INSERTAR PRODUCTOS");
+
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("NOMBRE");
+
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("MARCA");
+
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("TIPO");
+
+        jTextField1.setBackground(new Color(0,0,0,0));
+        jTextField1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jTextField1.setName(""); // NOI18N
+        jTextField1.setOpaque(false);
+        jTextField1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jTextField1PropertyChange(evt);
+            }
+        });
+
+        jTextField2.setBackground(new Color(0,0,0,0));
+        jTextField2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jTextField2.setOpaque(false);
+
+        jComboBox1.setBackground(new Color(0,0,0,0));
+        jComboBox1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jComboBox1.setOpaque(false);
+
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("PRECIO DE VENTA");
+
+        jTextField3.setBackground(new Color(0,0,0,0));
+        jTextField3.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jTextField3.setOpaque(false);
+
+        jTextField4.setBackground(new Color(0,0,0,0));
+        jTextField4.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jTextField4.setOpaque(false);
+
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("CANTIDAD");
+
+        jButton1.setBackground(new Color(0,0,0,0));
+        jButton1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jButton1.setText("INSERTAR");
+        jButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        jButton1.setOpaque(false);
+
         javax.swing.GroupLayout jinsertpanelLayout = new javax.swing.GroupLayout(jinsertpanel);
         jinsertpanel.setLayout(jinsertpanelLayout);
         jinsertpanelLayout.setHorizontalGroup(
             jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 710, Short.MAX_VALUE)
+            .addGroup(jinsertpanelLayout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(jLabel2)
+                .addGap(175, 175, 175)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addGap(92, 92, 92))
+            .addGroup(jinsertpanelLayout.createSequentialGroup()
+                .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jinsertpanelLayout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addComponent(jLabel1))
+                    .addGroup(jinsertpanelLayout.createSequentialGroup()
+                        .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jinsertpanelLayout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jinsertpanelLayout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jinsertpanelLayout.createSequentialGroup()
+                                .addGap(68, 68, 68)
+                                .addComponent(jLabel9)))
+                        .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jinsertpanelLayout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(43, 43, 43)
+                                .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jComboBox1, 0, 188, Short.MAX_VALUE)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jinsertpanelLayout.createSequentialGroup()
+                                .addGap(96, 96, 96)
+                                .addComponent(jLabel10)))))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jinsertpanelLayout.setVerticalGroup(
             jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
+            .addGroup(jinsertpanelLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(jLabel1)
+                .addGap(8, 8, 8)
+                .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel5))
+                    .addComponent(jLabel8))
+                .addGap(11, 11, 11)
+                .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jinsertpanelLayout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(3, 3, 3)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jinsertpanelLayout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
 
         fondo.add(jinsertpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 710, 200));
@@ -134,15 +286,15 @@ public class view extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jInsertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jInsertMouseClicked
-        if(x==245){
-            jinsertpanel.setSize(245,900);
+        if(x==200){
+            jinsertpanel.setSize(710,200);
             Thread th = new Thread(){
                 @Override
                 public void run(){
                     try{
-                        for(int i=245; i>=0;i--){
+                        for(int i=200; i>=0;i--){
                             Thread.sleep(1);
-                             jinsertpanel.setSize(i,900);
+                             jinsertpanel.setSize(710,i);
                         }
                     }catch(Exception e){
                         JOptionPane.showMessageDialog(null, e);
@@ -152,23 +304,27 @@ public class view extends javax.swing.JFrame {
             x=0;
         }else if(x==0){
              jinsertpanel.show();
-             jinsertpanel.setSize(x,900);
+             jinsertpanel.setSize(710,x);
             Thread th = new Thread(){
                 @Override
                 public void run(){
                     try{
                         for(int i=0; i<=x;i++){
                             Thread.sleep(1);
-                             jinsertpanel.setSize(i,900);
+                             jinsertpanel.setSize(710,i);
                         }
                     }catch(Exception e){
                         JOptionPane.showMessageDialog(null, e);
                     }
                 }
             }; th.start();
-            x=245;
+            x=200;
         }
     }//GEN-LAST:event_jInsertMouseClicked
+
+    private void jTextField1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTextField1PropertyChange
+        
+    }//GEN-LAST:event_jTextField1PropertyChange
 
     /**
      * @param args the command line arguments
@@ -207,13 +363,25 @@ public class view extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel fondo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jInsert;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JPanel jinsertpanel;
     private javax.swing.JPanel jview;
     // End of variables declaration//GEN-END:variables
