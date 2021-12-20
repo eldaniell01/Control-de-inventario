@@ -6,14 +6,16 @@
 package view;
 
 import com.sun.awt.AWTUtilities;
+import com.sun.swing.internal.plaf.basic.resources.basic;
 import java.awt.Color;
 import java.awt.Shape;
 import static java.awt.SystemColor.text;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.JOptionPane;
 import javax.swing.border.EmptyBorder; 
-import entity.Producto;
-
+import entity.borde;
+import javax.swing.border.Border;
+import javax.swing.border.MatteBorder;
 /**
  *
  * @author danie
@@ -27,9 +29,9 @@ public class view extends javax.swing.JFrame {
     public view() {
         initComponents();
         
-        
+        config();
     }
-    int x = 200;
+    int x=200;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -287,7 +289,11 @@ public class view extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public void config(){
+        jButtoninsert.setBorder(new borde(40));
+        
+    }
     private void jInsertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jInsertMouseClicked
         if(x==200){
             jinsertpanel.setSize(710,200);
