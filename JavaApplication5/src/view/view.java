@@ -12,12 +12,15 @@ import static java.awt.SystemColor.text;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.JOptionPane;
 import javax.swing.border.EmptyBorder; 
+import entity.Producto;
+
 /**
  *
  * @author danie
  */
 public class view extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form view
      */
@@ -57,7 +60,7 @@ public class view extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtoninsert = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -190,11 +193,11 @@ public class view extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("CANTIDAD");
 
-        jButton1.setBackground(new Color(0,0,0,0));
-        jButton1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jButton1.setText("INSERTAR");
-        jButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
-        jButton1.setOpaque(false);
+        jButtoninsert.setBackground(new Color(0,0,0,0));
+        jButtoninsert.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jButtoninsert.setText("INSERTAR");
+        jButtoninsert.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        jButtoninsert.setOpaque(false);
 
         javax.swing.GroupLayout jinsertpanelLayout = new javax.swing.GroupLayout(jinsertpanel);
         jinsertpanel.setLayout(jinsertpanelLayout);
@@ -233,7 +236,7 @@ public class view extends javax.swing.JFrame {
                                 .addGap(43, 43, 43)
                                 .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jComboBox1, 0, 188, Short.MAX_VALUE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(jButtoninsert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jinsertpanelLayout.createSequentialGroup()
                                 .addGap(96, 96, 96)
                                 .addComponent(jLabel10)))))
@@ -266,7 +269,7 @@ public class view extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jButtoninsert, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
 
         fondo.add(jinsertpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 710, 200));
@@ -363,7 +366,7 @@ public class view extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel fondo;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtoninsert;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jInsert;
     private javax.swing.JLabel jLabel1;
