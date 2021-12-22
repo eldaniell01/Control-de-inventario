@@ -12,7 +12,7 @@ import java.awt.Shape;
 import static java.awt.SystemColor.text;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.JOptionPane;
-import javax.swing.border.EmptyBorder; 
+import javax.swing.*; 
 import entity.borde;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
@@ -31,7 +31,8 @@ public class view extends javax.swing.JFrame {
         
         config();
     }
-    int x=200;
+    int x=0;
+    int y=0;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,17 +44,16 @@ public class view extends javax.swing.JFrame {
 
         fondo = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jview = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jInsert = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jinsertpanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jbinsertar = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
@@ -62,7 +62,13 @@ public class view extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jButtoninsert = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jviewpanel = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -73,48 +79,19 @@ public class view extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(151, 17, 21));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jview.setBackground(new java.awt.Color(151, 17, 21));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_product_50px.png"))); // NOI18N
-
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("VER PRODUCTOS");
-
-        javax.swing.GroupLayout jviewLayout = new javax.swing.GroupLayout(jview);
-        jview.setLayout(jviewLayout);
-        jviewLayout.setHorizontalGroup(
-            jviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jviewLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addContainerGap(72, Short.MAX_VALUE))
-        );
-        jviewLayout.setVerticalGroup(
-            jviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jviewLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jviewLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(23, 23, 23))
-        );
-
-        jPanel1.add(jview, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, 70));
-
         jPanel2.setBackground(new java.awt.Color(151, 17, 21));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jInsert.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jInsertMouseClicked(evt);
+                jPanel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel2MouseExited(evt);
             }
         });
-        jPanel2.add(jInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 50));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -124,27 +101,71 @@ public class view extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_product_50px.png"))); // NOI18N
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 280, 50));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 290, 50));
+
+        jPanel5.setBackground(new java.awt.Color(151, 17, 21));
+        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel5MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel5MouseExited(evt);
+            }
+        });
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("VER PRODUCTOS");
+        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, 30));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_list_50px.png"))); // NOI18N
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 290, 50));
 
         fondo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
 
         jinsertpanel.setBackground(new java.awt.Color(217, 32, 36));
+        jinsertpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("INSERTAR PRODUCTOS");
+        jinsertpanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 11, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("NOMBRE");
+        jLabel2.setText("MARCA");
+        jinsertpanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("MARCA");
+        jbinsertar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jbinsertar.setForeground(new java.awt.Color(255, 255, 255));
+        jbinsertar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jbinsertar.setText("INSERTAR");
+        jbinsertar.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        jbinsertar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jbinsertarMouseMoved(evt);
+            }
+        });
+        jbinsertar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jbinsertarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbinsertarMouseExited(evt);
+            }
+        });
+        jinsertpanel.add(jbinsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(525, 154, 164, 35));
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("TIPO");
+        jinsertpanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(588, 50, -1, -1));
 
         jTextField1.setBackground(new Color(0,0,0,0));
         jTextField1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -158,6 +179,7 @@ public class view extends javax.swing.JFrame {
                 jTextField1PropertyChange(evt);
             }
         });
+        jinsertpanel.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 207, 38));
 
         jTextField2.setBackground(new Color(0,0,0,0));
         jTextField2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -165,6 +187,7 @@ public class view extends javax.swing.JFrame {
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         jTextField2.setOpaque(false);
+        jinsertpanel.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 207, 38));
 
         jComboBox1.setBackground(new Color(0,0,0,0));
         jComboBox1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -172,10 +195,12 @@ public class view extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         jComboBox1.setOpaque(false);
+        jinsertpanel.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 188, 38));
 
         jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("PRECIO DE VENTA");
+        jinsertpanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
 
         jTextField3.setBackground(new Color(0,0,0,0));
         jTextField3.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -183,6 +208,7 @@ public class view extends javax.swing.JFrame {
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         jTextField3.setOpaque(false);
+        jinsertpanel.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 207, 40));
 
         jTextField4.setBackground(new Color(0,0,0,0));
         jTextField4.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -190,91 +216,88 @@ public class view extends javax.swing.JFrame {
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         jTextField4.setOpaque(false);
+        jinsertpanel.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 207, 40));
 
         jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("CANTIDAD");
+        jinsertpanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, -1, -1));
 
-        jButtoninsert.setBackground(new Color(0,0,0,0));
-        jButtoninsert.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jButtoninsert.setText("INSERTAR");
-        jButtoninsert.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
-        jButtoninsert.setOpaque(false);
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("NOMBRE");
+        jinsertpanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, -1));
 
-        javax.swing.GroupLayout jinsertpanelLayout = new javax.swing.GroupLayout(jinsertpanel);
-        jinsertpanel.setLayout(jinsertpanelLayout);
-        jinsertpanelLayout.setHorizontalGroup(
-            jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jinsertpanelLayout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jLabel2)
-                .addGap(175, 175, 175)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(92, 92, 92))
-            .addGroup(jinsertpanelLayout.createSequentialGroup()
-                .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jinsertpanelLayout.createSequentialGroup()
-                        .addGap(220, 220, 220)
-                        .addComponent(jLabel1))
-                    .addGroup(jinsertpanelLayout.createSequentialGroup()
-                        .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jinsertpanelLayout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jinsertpanelLayout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jinsertpanelLayout.createSequentialGroup()
-                                .addGap(68, 68, 68)
-                                .addComponent(jLabel9)))
-                        .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jinsertpanelLayout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(43, 43, 43)
-                                .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBox1, 0, 188, Short.MAX_VALUE)
-                                    .addComponent(jButtoninsert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jinsertpanelLayout.createSequentialGroup()
-                                .addGap(96, 96, 96)
-                                .addComponent(jLabel10)))))
-                .addContainerGap(12, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
-        jinsertpanelLayout.setVerticalGroup(
-            jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jinsertpanelLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(jLabel1)
-                .addGap(8, 8, 8)
-                .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel5))
-                    .addComponent(jLabel8))
-                .addGap(11, 11, 11)
-                .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jinsertpanelLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(3, 3, 3)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jinsertpanelLayout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jinsertpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtoninsert, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        fondo.add(jinsertpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 710, 200));
+        jinsertpanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
+
+        fondo.add(jinsertpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 710, 0));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81))
+        );
+
+        fondo.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 700, 250));
+
+        jviewpanel.setBackground(new java.awt.Color(217, 32, 36));
+
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("LISTADO DE PRODUCTOS");
+
+        javax.swing.GroupLayout jviewpanelLayout = new javax.swing.GroupLayout(jviewpanel);
+        jviewpanel.setLayout(jviewpanelLayout);
+        jviewpanelLayout.setHorizontalGroup(
+            jviewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jviewpanelLayout.createSequentialGroup()
+                .addGap(213, 213, 213)
+                .addComponent(jLabel3)
+                .addContainerGap(219, Short.MAX_VALUE))
+        );
+        jviewpanelLayout.setVerticalGroup(
+            jviewpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jviewpanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        fondo.add(jviewpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 710, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -291,10 +314,34 @@ public class view extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     public void config(){
-        jButtoninsert.setBorder(new borde(40));
+        
         
     }
-    private void jInsertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jInsertMouseClicked
+    private void jTextField1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTextField1PropertyChange
+        
+    }//GEN-LAST:event_jTextField1PropertyChange
+
+    private void jbinsertarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbinsertarMouseMoved
+       jbinsertar.setForeground((Color.black));
+    }//GEN-LAST:event_jbinsertarMouseMoved
+
+    private void jbinsertarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbinsertarMouseExited
+       jbinsertar.setOpaque(false);
+        jbinsertar.setForeground(Color.white);
+       
+    }//GEN-LAST:event_jbinsertarMouseExited
+
+    private void jbinsertarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbinsertarMouseEntered
+        jbinsertar.setOpaque(true);
+        jbinsertar.setBackground(Color.WHITE);
+    }//GEN-LAST:event_jbinsertarMouseEntered
+
+    private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
+        jPanel2.setOpaque(true);
+        jPanel2.setBackground(new Color(217,32,36));
+    }//GEN-LAST:event_jPanel2MouseEntered
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
         if(x==200){
             jinsertpanel.setSize(710,200);
             Thread th = new Thread(){
@@ -329,11 +376,59 @@ public class view extends javax.swing.JFrame {
             }; th.start();
             x=200;
         }
-    }//GEN-LAST:event_jInsertMouseClicked
+    }//GEN-LAST:event_jPanel2MouseClicked
 
-    private void jTextField1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTextField1PropertyChange
-        
-    }//GEN-LAST:event_jTextField1PropertyChange
+    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
+        if(y==200){
+            jviewpanel.setSize(710,200);
+            Thread th = new Thread(){
+                @Override
+                public void run(){
+                    try{
+                        for(int i=200; i>=0;i--){
+                            Thread.sleep(1);
+                            jviewpanel.setSize(710,i);
+                        }
+                    }catch(Exception e){
+                        JOptionPane.showMessageDialog(null, e);
+                    }
+                }
+            }; th.start();
+            y=0;
+        }else if(y==0){
+             jviewpanel.show();
+             jviewpanel.setSize(710,y);
+            Thread th = new Thread(){
+                @Override
+                public void run(){
+                    try{
+                        for(int i=0; i<=y;i++){
+                            Thread.sleep(1);
+                             jviewpanel.setSize(710,i);
+                        }
+                    }catch(Exception e){
+                        JOptionPane.showMessageDialog(null, e);
+                    }
+                }
+            }; th.start();
+            y=200;
+        }
+    }//GEN-LAST:event_jPanel5MouseClicked
+
+    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
+        jPanel5.setOpaque(true);
+        jPanel5.setBackground(new Color(217,32,36));
+    }//GEN-LAST:event_jPanel5MouseEntered
+
+    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
+        jPanel5.setOpaque(false);
+        jPanel5.setBackground(new Color(151,17,21));
+    }//GEN-LAST:event_jPanel5MouseExited
+
+    private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
+        jPanel2.setOpaque(false);
+        jPanel2.setBackground(new Color(151,17,21));
+    }//GEN-LAST:event_jPanel2MouseExited
 
     /**
      * @param args the command line arguments
@@ -372,14 +467,13 @@ public class view extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel fondo;
-    private javax.swing.JButton jButtoninsert;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jInsert;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -387,11 +481,17 @@ public class view extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel jbinsertar;
     private javax.swing.JPanel jinsertpanel;
-    private javax.swing.JPanel jview;
+    private javax.swing.JPanel jviewpanel;
     // End of variables declaration//GEN-END:variables
 }
