@@ -14,14 +14,16 @@ import java.awt.geom.RoundRectangle2D;
 import javax.swing.JOptionPane;
 import javax.swing.*; 
 import entity.borde;
+import java.awt.Font;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author danie
  */
 public class view extends javax.swing.JFrame {
-
+    DefaultTableModel modelo = new DefaultTableModel();
     
     /**
      * Creates new form view
@@ -29,7 +31,7 @@ public class view extends javax.swing.JFrame {
     public view() {
         initComponents();
         
-        config();
+        tableproduct();
     }
     int x=0;
     int y=0;
@@ -50,6 +52,9 @@ public class view extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jinsertpanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -65,10 +70,11 @@ public class view extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtproductos = new javax.swing.JTable();
         jviewpanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -126,6 +132,30 @@ public class view extends javax.swing.JFrame {
         jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 290, 50));
+
+        jPanel6.setBackground(new java.awt.Color(151, 17, 21));
+        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel6MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel6MouseExited(evt);
+            }
+        });
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("LIMPIAR TABLA");
+        jPanel6.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, 30));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Trash_50px_1.png"))); // NOI18N
+        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 290, 50));
 
         fondo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
 
@@ -243,7 +273,8 @@ public class view extends javax.swing.JFrame {
 
         fondo.add(jinsertpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 710, 0));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtproductos.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jtproductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -254,22 +285,19 @@ public class view extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jtproductos);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
         );
 
         fondo.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 700, 250));
@@ -299,6 +327,14 @@ public class view extends javax.swing.JFrame {
 
         fondo.add(jviewpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 710, 0));
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Close_50px_1.png"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        fondo.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 0, -1, 50));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -313,9 +349,19 @@ public class view extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    public void config(){
-        
-        
+    public void tableproduct(){
+        try {
+            String[] columnNames = {"ID", "NOMBRE", "MARCA", "TIPO", "PRECIO DE VENTA","EXISTENCIA"}; // nombre las columnas 
+            modelo.setColumnIdentifiers(columnNames); // obtiene los nombres 
+            modelo.setColumnCount(6);// crSea las 5 columnas 
+            modelo.setRowCount(0);// empienza con la primera fila
+            
+            jtproductos.setModel(modelo); // muestra el diseño de la tabla
+            
+            }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "error mostrar" + ex);
+        }
     }
     private void jTextField1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTextField1PropertyChange
         
@@ -430,6 +476,25 @@ public class view extends javax.swing.JFrame {
         jPanel2.setBackground(new Color(151,17,21));
     }//GEN-LAST:event_jPanel2MouseExited
 
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        this.dispose();
+        
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel6MouseClicked
+
+    private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
+        jPanel6.setOpaque(true);
+        jPanel6.setBackground(new Color(217,32,36));
+    }//GEN-LAST:event_jPanel6MouseEntered
+
+    private void jPanel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseExited
+       jPanel6.setOpaque(false);
+        jPanel6.setBackground(new Color(151,17,21));
+    }//GEN-LAST:event_jPanel6MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -472,8 +537,11 @@ public class view extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -484,14 +552,15 @@ public class view extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel jbinsertar;
     private javax.swing.JPanel jinsertpanel;
+    private javax.swing.JTable jtproductos;
     private javax.swing.JPanel jviewpanel;
     // End of variables declaration//GEN-END:variables
 }
