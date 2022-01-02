@@ -193,6 +193,9 @@ public class view extends javax.swing.JFrame {
             }
         });
         jbclean.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbcleanMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jbcleanMouseEntered(evt);
             }
@@ -432,6 +435,9 @@ public class view extends javax.swing.JFrame {
             }
         });
         jbviewclean.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbviewcleanMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jbviewcleanMouseEntered(evt);
             }
@@ -522,6 +528,21 @@ public class view extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    public void clean(){
+        int fila = modelo.getRowCount();
+        for (int i=1; i<=fila; i++){
+            modelo.removeRow(0);
+        }
+        jtinsertmarca.setText("");
+        jtinsertname.setText("");
+        jtinsertnumber.setText("");
+        jtinsertvent.setText("");
+        jtviewmarca.setText("");
+        jtviewname.setText("");
+        jccategory.setSelectedIndex(0);
+        jcinsertkind.setSelectedIndex(0);
+    }
     
     public void tableproduct(){
         try {
@@ -656,7 +677,7 @@ public class view extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
-        // TODO add your handling code here:
+        clean();
     }//GEN-LAST:event_jPanel6MouseClicked
 
     private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
@@ -732,6 +753,14 @@ public class view extends javax.swing.JFrame {
         jbinsertar1.setOpaque(false);
         jbinsertar1.setForeground(Color.white);
     }//GEN-LAST:event_jbinsertar1MouseExited
+
+    private void jbcleanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbcleanMouseClicked
+        clean();
+    }//GEN-LAST:event_jbcleanMouseClicked
+
+    private void jbviewcleanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbviewcleanMouseClicked
+        clean();
+    }//GEN-LAST:event_jbviewcleanMouseClicked
 
     /**
      * @param args the command line arguments
