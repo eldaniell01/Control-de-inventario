@@ -4,17 +4,15 @@
  * and open the template in the editor.
  */
 package view;
-
-import com.sun.awt.AWTUtilities;
-import com.sun.swing.internal.plaf.basic.resources.basic;
 import java.awt.Color;
-import java.awt.Shape;
-import static java.awt.SystemColor.text;
-import java.awt.geom.RoundRectangle2D;
 import javax.swing.JOptionPane;
+import conexiondb.conexion;
+import entity.Producto;
+import consultas.consult_producto;
 import javax.swing.*; 
 import entity.borde;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableModel;
@@ -30,7 +28,6 @@ public class view extends javax.swing.JFrame {
      */
     public view() {
         initComponents();
-        
         tableproduct();
     }
     int x=0;
@@ -546,9 +543,9 @@ public class view extends javax.swing.JFrame {
     
     public void tableproduct(){
         try {
-            String[] columnNames = {"ID", "NOMBRE", "MARCA", "TIPO", "PRECIO DE VENTA","EXISTENCIA"}; // nombre las columnas 
+            String[] columnNames = {"NOMBRE", "MARCA", "TIPO", "PRECIO DE VENTA","EXISTENCIA"}; // nombre las columnas 
             modelo.setColumnIdentifiers(columnNames); // obtiene los nombres 
-            modelo.setColumnCount(6);// crSea las 5 columnas 
+            modelo.setColumnCount(5);// crSea las 5 columnas 
             modelo.setRowCount(0);// empienza con la primera fila
             
             jtproductos.setModel(modelo); // muestra el diseño de la tabla
@@ -558,6 +555,36 @@ public class view extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "error mostrar" + ex);
         }
     }
+    
+    public void reg_producto(){
+        clean();
+        if(jtinsertname.getText().equals("")||jtinsertmarca.getText().equals("")||jtinsertvent.getText().equals("")||jtinsertnumber.getText().equals("")||jcinsertkind.getSelectedIndex()==0){
+            JOptionPane.showConfirmDialog(null, "hay un campo vacio");
+        }
+        else{
+            int category = jcinsertkind.getSelectedIndex();
+            Producto p = new Producto();
+            p.setName(jtinsertname.getText());
+            p.setMarca(jtinsertmarca.getText());
+            p.setPv(Float.parseFloat(jtinsertvent.getText()));
+            p.setExistencia(Integer.parseInt(jtinsertnumber.getText()));
+            p.setCategory(category);
+            consult_producto.reg_producto(p);
+            String[] filat = new String[5];
+            filat[0] = jtinsertname.getText();
+            filat[1] = jtinsertmarca.getText();
+            filat[2] = jtinsertvent.getText();
+            filat[3] = jtinsertnumber.getText();
+            filat[4] = jcinsertkind.getSelectedItem().toString();
+            modelo.addRow(filat);
+            jtinsertmarca.setText("");
+            jtinsertname.setText("");
+            jtinsertnumber.setText("");
+            jtinsertvent.setText("");
+            jcinsertkind.setSelectedIndex(0);
+        }
+    }
+    
     private void jtinsertnamePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jtinsertnamePropertyChange
         
     }//GEN-LAST:event_jtinsertnamePropertyChange
