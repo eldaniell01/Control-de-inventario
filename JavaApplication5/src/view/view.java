@@ -7,8 +7,8 @@ package view;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import conexiondb.conexion;
-import entity.Producto;
-import consultas.consult_producto;
+import entity.*;
+import consultas.*;
 import javax.swing.*; 
 import entity.borde;
 import java.awt.Font;
@@ -29,6 +29,7 @@ public class view extends javax.swing.JFrame {
     public view() {
         initComponents();
         tableproduct();
+        load_category(0);
     }
     int x=0;
     int y=0;
@@ -229,10 +230,7 @@ public class view extends javax.swing.JFrame {
         jtinsertmarca.setOpaque(false);
         jinsertpanel.add(jtinsertmarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 207, 38));
 
-        jcinsertkind.setBackground(new Color(0,0,0,0));
         jcinsertkind.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jcinsertkind.setForeground(new java.awt.Color(255, 255, 255));
-        jcinsertkind.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcinsertkind.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         jcinsertkind.setOpaque(false);
         jinsertpanel.add(jcinsertkind, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 188, 38));
@@ -292,6 +290,9 @@ public class view extends javax.swing.JFrame {
             }
         });
         jbinsertar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbinsertar1MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jbinsertar1MouseEntered(evt);
             }
@@ -301,7 +302,7 @@ public class view extends javax.swing.JFrame {
         });
         jinsertpanel.add(jbinsertar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 160, 164, 35));
 
-        fondo.add(jinsertpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 710, 200));
+        fondo.add(jinsertpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 710, 0));
 
         jtproductos.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jtproductos.setModel(new javax.swing.table.DefaultTableModel(
@@ -376,10 +377,7 @@ public class view extends javax.swing.JFrame {
             }
         });
 
-        jccategory.setBackground(new Color(0,0,0,0));
         jccategory.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jccategory.setForeground(new java.awt.Color(255, 255, 255));
-        jccategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jccategory.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         jccategory.setOpaque(false);
 
@@ -526,6 +524,22 @@ public class view extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    public void load_category(int id){
+        int index = 1;
+        jccategory.removeAllItems();
+        jcinsertkind.removeAllItems();
+        jccategory.addItem("Seleccione la categoría");
+        jcinsertkind.addItem("Seleccione la categoría");
+        for(category c: consult_category.getlistarea()){
+            jccategory.addItem(c.getCategory());
+            jcinsertkind.addItem(c.getCategory());
+            if(c.getId_category() == id){
+                jccategory.setSelectedIndex(index);
+                jcinsertkind.setSelectedIndex(index);
+            }
+            index++;
+        }
+    }
     public void clean(){
         int fila = modelo.getRowCount();
         for (int i=1; i<=fila; i++){
@@ -557,9 +571,9 @@ public class view extends javax.swing.JFrame {
     }
     
     public void reg_producto(){
-        clean();
+        
         if(jtinsertname.getText().equals("")||jtinsertmarca.getText().equals("")||jtinsertvent.getText().equals("")||jtinsertnumber.getText().equals("")||jcinsertkind.getSelectedIndex()==0){
-            JOptionPane.showConfirmDialog(null, "hay un campo vacio");
+            JOptionPane.showMessageDialog(null, "hay un campo vacio");
         }
         else{
             int category = jcinsertkind.getSelectedIndex();
@@ -573,9 +587,9 @@ public class view extends javax.swing.JFrame {
             String[] filat = new String[5];
             filat[0] = jtinsertname.getText();
             filat[1] = jtinsertmarca.getText();
-            filat[2] = jtinsertvent.getText();
-            filat[3] = jtinsertnumber.getText();
-            filat[4] = jcinsertkind.getSelectedItem().toString();
+            filat[2] = jcinsertkind.getSelectedItem().toString();
+            filat[3] = jtinsertvent.getText(); 
+            filat[4] = jtinsertnumber.getText();
             modelo.addRow(filat);
             jtinsertmarca.setText("");
             jtinsertname.setText("");
@@ -788,6 +802,10 @@ public class view extends javax.swing.JFrame {
     private void jbviewcleanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbviewcleanMouseClicked
         clean();
     }//GEN-LAST:event_jbviewcleanMouseClicked
+
+    private void jbinsertar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbinsertar1MouseClicked
+        reg_producto();
+    }//GEN-LAST:event_jbinsertar1MouseClicked
 
     /**
      * @param args the command line arguments

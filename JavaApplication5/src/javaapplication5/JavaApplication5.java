@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package javaapplication5;
-
+import view.view;
 /**
  *
  * @author danie
@@ -16,6 +16,8 @@ public class JavaApplication5 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        view v = new view();
+        v.show(true);
     }
     
 }

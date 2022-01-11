@@ -33,7 +33,7 @@ public class conexion {
         }
         catch(ClassNotFoundException | SQLException e){
             JOptionPane.showMessageDialog(null, e);
-            System.out.println(e+" error en la conexion");
+            System.out.println(e+" error en la conexion1");
         }
     }
     public Connection getConnection(){
