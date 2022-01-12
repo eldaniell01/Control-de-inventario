@@ -13,6 +13,10 @@ import javax.swing.*;
 import entity.borde;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableModel;
@@ -392,6 +396,9 @@ public class view extends javax.swing.JFrame {
             }
         });
         jbviewsearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbviewsearchMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jbviewsearchMouseEntered(evt);
             }
@@ -411,6 +418,9 @@ public class view extends javax.swing.JFrame {
             }
         });
         jbviewlistall.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbviewlistallMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jbviewlistallMouseEntered(evt);
             }
@@ -599,6 +609,100 @@ public class view extends javax.swing.JFrame {
         }
     }
     
+    public void list_producto(){
+        tableproduct();
+        conexion bd = new conexion();
+        Connection cn = bd.getConnection();
+        PreparedStatement inser = null;
+        String[] registro = new String[5];
+        String sql = "select *from producto";
+        try{
+            inser = cn.prepareStatement(sql);
+            ResultSet rs = inser.executeQuery();
+            while(rs.next()){
+                registro[0] = rs.getString("name");
+                registro[1] = rs.getString("marca");
+                registro[2] = rs.getString("categoría_idCategoría");
+                registro[3] = rs.getString("precio_v");
+                registro[4] = rs.getString("cantidad");
+                modelo.addRow(registro);
+            }
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null,"error: "+ e);
+        }
+    }
+    
+    public void search_producto_name(){
+        tableproduct();
+        conexion bd = new conexion();
+        Connection cn = bd.getConnection();
+        PreparedStatement inser = null;
+        String c = jtviewname.getText();
+        String sql = "Select p.name, p.marca, p.precio_v, p.cantidad, c.category \n"
+        +"from producto p \n"
+        +"inner join categoría c on c.idCategoría = p.categoría_idCategoría \n"
+        +"where name=?";
+        String[] registro = new String[5];
+        try{
+            inser = cn.prepareStatement(sql);
+            inser.setString(1, c);
+            ResultSet rs = inser.executeQuery();
+            if(rs.next()){
+                inser = cn.prepareStatement(sql);
+                inser.setString(1, c);
+                ResultSet rs3 = inser.executeQuery();
+                while(rs3.next()){
+                    registro[0] = rs.getString("p.name");
+                    registro[1] = rs.getString("p.marca");
+                    registro[2] = rs.getString("c.category");
+                    registro[3] = rs.getString("p.precio_v");
+                    registro[4] = rs.getString("p.cantidad");
+                    modelo.addRow(registro);
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "no se encontro producto");
+            }
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null,"error: "+ e);
+        }
+    }
+    
+    public void search_producto_marca(){
+        tableproduct();
+        conexion bd = new conexion();
+        Connection cn = bd.getConnection();
+        PreparedStatement inser = null;
+        String c = jtviewmarca.getText();
+        String sql = "Select p.name, p.marca, p.precio_v, p.cantidad, c.category \n"
+        +"from producto p \n"
+        +"inner join categoría c on c.idCategoría = p.categoría_idCategoría \n"
+        +"where p.marca=?";
+        String[] registro = new String[5];
+        try{
+            inser = cn.prepareStatement(sql);
+            inser.setString(1, c);
+            ResultSet rs = inser.executeQuery();
+            if(rs.next()){
+                inser = cn.prepareStatement(sql);
+                inser.setString(1, c);
+                ResultSet rs3 = inser.executeQuery();
+                while(rs3.next()){
+                    registro[0] = rs.getString("p.name");
+                    registro[1] = rs.getString("p.marca");
+                    registro[2] = rs.getString("c.category");
+                    registro[3] = rs.getString("p.precio_v");
+                    registro[4] = rs.getString("p.cantidad");
+                    modelo.addRow(registro);
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "no se encontro producto");
+            }
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null,"error: "+ e);
+        }
+    }
     private void jtinsertnamePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jtinsertnamePropertyChange
         
     }//GEN-LAST:event_jtinsertnamePropertyChange
@@ -806,6 +910,22 @@ public class view extends javax.swing.JFrame {
     private void jbinsertar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbinsertar1MouseClicked
         reg_producto();
     }//GEN-LAST:event_jbinsertar1MouseClicked
+
+    private void jbviewsearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbviewsearchMouseClicked
+        if(!jtviewname.getText().equals("")){
+            search_producto_name();
+        }
+        else if(!jtviewmarca.getText().equals("")){
+            search_producto_marca();
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Escriba el producto o marca que desea buscar");
+        }
+    }//GEN-LAST:event_jbviewsearchMouseClicked
+
+    private void jbviewlistallMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbviewlistallMouseClicked
+        list_producto();
+    }//GEN-LAST:event_jbviewlistallMouseClicked
 
     /**
      * @param args the command line arguments
